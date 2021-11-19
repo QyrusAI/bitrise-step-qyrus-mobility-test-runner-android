@@ -1,9 +1,8 @@
 title: |-
   qyrus-mobility-test-runner-android
-summary: |
-  Upload apk and ipa to Qyrus cloud platform and trigger the suites designed on the platform on a real device
+summary: Upload apk and ipa to Qyrus platform, triggers the tests.
 description: |
-  This step uploads the apk or ipa to Qyrus cloud test platform and runs the test on areal devices.
+  This step uploads the apk or ipa to Qyrus test platform, runs the test on real devices.
 website: https://github.com/qyrusai/bitrise-step-qyrus-mobility
 source_code_url: https://github.com/qyrusai/bitrise-step-qyrus-mobility
 support_url: https://github.com/qyrusai/bitrise-step-qyrus-mobility/issues
