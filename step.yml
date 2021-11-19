@@ -20,12 +20,9 @@ run_if: ""
 
 deps:
   brew:
-  - name: git
-  - name: wget
+  - name: node
   apt_get:
-  - name: git
-  - name: wget
-
+  - name: nodejs
 
 toolkit:
   bash:
@@ -65,6 +62,7 @@ inputs:
       description: |
         The password used to run devops tasks on Qyrus.
       is_required: true
+      is_sensitive: true
   - qyrus_team_name:
     opts:
       title: "qyrus_team_name"
@@ -127,7 +125,7 @@ outputs:
   - QYRUS_TEST_REPORT_URL: null
     opts:
       description: |
-        The app url returned by Browserstack App Automate with the following format "bs://..."". 
-        Use this in your remote device tests, usually through your capabilities configuration
-      summary: The app URL used in your App Automate's remote device tests
-      title: Browserstack App Automate App URL
+        The output of test is the report URL which can be used
+        to download and analyse the test steps
+      summary: Its the report download URL
+      title: Qyrus report download url
