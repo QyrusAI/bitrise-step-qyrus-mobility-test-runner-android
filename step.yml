@@ -1,11 +1,11 @@
 title: |-
-  qyrus-mobility-test-runner-android
+  Qyrus Mobile Runner Android
 summary: Upload apk and ipa to Qyrus platform, triggers the tests.
 description: |
   This step uploads the apk or ipa to Qyrus test platform, runs the test on real devices.
-website: https://github.com/qyrusai/bitrise-step-qyrus-mobility
-source_code_url: https://github.com/qyrusai/bitrise-step-qyrus-mobility
-support_url: https://github.com/qyrusai/bitrise-step-qyrus-mobility/issues
+website: https://github.com/qyrusai/bitrise-step-qyrus-mobility-test-runner-android
+source_code_url: https://github.com/qyrusai/bitrise-step-qyrus-mobility-test-runner-android
+support_url: https://github.com/qyrusai/bitrise-step-qyrus-mobility-test-runner-android/issues
 host_os_tags:
   - osx-10.10
   - ubuntu-16.04
@@ -33,7 +33,7 @@ inputs:
   # All parameters required to run test on Qyrus Cloud
   - gateway_url:
     opts:
-      title: "gateway_url"
+      title: "Gateway URL"
       summary: Qyrus provided gateway url
       description: |
         Enter the url of the gateway which is provided by Qyrus else
@@ -50,14 +50,14 @@ inputs:
       title: A Bitrise generated APK or IPA path
   - qyrus_username:
     opts:
-      title: "qyrus_username"
+      title: "Qyrus Username"
       summary: Your Qyrus devops username
       description: |
         The username used to run devops tasks on Qyrus.
       is_required: true
   - qyrus_password:
     opts:
-      title: "qyrus_password"
+      title: "Qyrus Password"
       summary: Your Qyrus devops password
       description: |
         The password used to run devops tasks on Qyrus.
@@ -65,28 +65,28 @@ inputs:
       is_sensitive: true
   - qyrus_team_name:
     opts:
-      title: "qyrus_team_name"
+      title: "Qyrus Team Name"
       summary: Enter the team name
       description: |
         Team name you can find by logging into Qyrus app. Copy the team name and paste it.
       is_required: true
   - qyrus_project_name:
     opts:
-      title: "qyrus_project_name"
+      title: "Qyrus Project Name"
       summary: Enter the project name
       description: |
         Project name you can find by logging into Qyrus app. Copy the team name and paste it.
       is_required: true
   - qyrus_suite_name:
     opts:
-      title: "qyrus_suite_name"
+      title: "Qyrus Suite Name"
       summary: Enter the project name
       description: |
         Suite name you can find by logging into Qyrus app. Copy the team name and paste it.
       is_required: true
   - app_activity:
     opts:
-      title: "app_activity"
+      title: "App Activity"
       summary: Enter your android app activity
       description: |
         Enter android app activity which will be in the form of com.example.splash_screen
