@@ -2,8 +2,10 @@
 
 const fs = require('fs');
 const https = require('https')
+const http = require('http')
 const request = require('request')
 const path = require('path')
+const url = require('url')
 const { exec } = require("child_process");
 
 
@@ -18,25 +20,41 @@ let app_activity = process.argv[9];
 let device_pool_name = process.argv[10];
 let upload_app = process.argv[11];
 let enable_debug = process.argv[12];
-let host_name = url.parse(gatewayUrl).hostname;
-let port = url.parse(gatewayUrl).port;
+let bundle_id = process.argv[13];
+const gatewayURLParse = new URL(gatewayUrl);
+let host_name = gatewayURLParse.hostname;
+let port = gatewayURLParse.port;
+let pathName = gatewayURLParse.pathname;
+let protocol = gatewayURLParse.protocol;
 
 // testing parameters
-if ( appPath == null || qyrus_username == null || qyrus_password == null ) {
+if ( appPath == null || qyrus_username == null || qyrus_password == null || appPath == null || gatewayUrl == null ) {
     console.log('ERROR : One or more parameters are invalid');
     process.exitCode = 1;
 }
 
+if ( app_activity == null ) {
+    app_activity = '';
+}
+
+if ( bundle_id == null ) {
+    bundle_id = '';
+}
+
 if ( enable_debug == 'yes' ) {
     console.log('******* QYRUS Cloud - INPUT PARAMETERS *******');
-    console.log(appPath);
-    console.log(qyrus_username);
-    console.log(qyrus_team_name);
-    console.log(qyrus_project_name);
-    console.log(qyrus_suite_name);
-    console.log(app_activity);
-    console.log(device_pool_name);
-    console.log(app_activity);
+    console.log('App Path :',appPath);
+    console.log('Username :',qyrus_username);
+    console.log('Team Name :',qyrus_team_name);
+    console.log('Project Name :',qyrus_project_name);
+    console.log('Suite Name :',qyrus_suite_name);
+    console.log('App Activity :',app_activity);
+    console.log('Bundle ID :',bundle_id);
+    console.log('Device Pool Name :',device_pool_name);
+    console.log('Host Name :',host_name);
+    console.log('Port :',port);
+    console.log('Path Name :',pathName);
+    console.log('Upload App :',upload_app);
 }
 
 var appName = '';
@@ -44,7 +62,7 @@ var appName = '';
 if ( upload_app === 'yes' ) {
     if ( fs.existsSync(appPath) ) {
         request.post({
-            url: gatewayUrl+"/uploadApp",
+            url: gatewayUrl+pathName+"/uploadApp",
             formData: {
                 file: fs.createReadStream(appPath),
                 uploadUserName: qyrus_username,
@@ -79,7 +97,7 @@ function runTrigger ( ) {
     let apiCallConfig = {
         host: host_name,
         port: port,
-        path: '/mobilityTrigger',
+        path: pathName+'/mobilityTrigger',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -93,7 +111,8 @@ function runTrigger ( ) {
         "testSuiteName": qyrus_suite_name,
         "devicePoolName": device_pool_name,
         "appFileName": appName,
-        "appActivity": app_activity
+        "appActivity": app_activity,
+        "bundleId": bundle_id
     }
     var reqPost = https.request ( apiCallConfig, function(response) {
         if (response.statusCode != 200) {
@@ -125,7 +144,7 @@ function checkExecStatus (testRunResponseBody) {
     let apiCallConfig = {
         host: host_name,
         port: port,
-        path: '/checkExecutionStatus',
+        path: pathName+'/checkExecutionStatus',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -165,7 +184,7 @@ function completedTest (execStatusResponse) {
     let apiCallConfig = {
         host: host_name,
         port: port,
-        path: '/checkExecutionResult',
+        path: pathName+'/checkExecutionResult',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

@@ -12,17 +12,18 @@ app:
   - MY_STEPLIB_REPO_FORK_GIT_URL: https://github.com/QyrusAI/bitrise-steplib.git
 
   # To test add values below
-  - GATEWAY_URL: "http://localhost:8081"
-  - UPLOAD_PATH: "/tmp/TestApp.apk"
-  - QYRUS_USERNAME: "projectd@test.com"
+  - GATEWAY_URL: "https://stg-gateway.quinnox.info:8243/cli-adapter-mobility/v1/v1"
+  - UPLOAD_PATH: "app-debug.apk"
+  - QYRUS_USERNAME: "projectd@yopmail.com"
   - QYRUS_PASSWORD: "UGFzc3dvcmRAMTIzCg=="
-  - QYRUS_TEAM_NAME: "Qyrus End To End"
-  - QYRUS_PROJECT_NAME: "Mobility Test"
-  - QYRUS_SUITE_NAME: "AzureTest"
-  - APP_ACTIVITY: "in.fourthlion.testapp.mobileapp.MainActivity"
-  - DEVICE_POOL_NAME: "Bitrise_Test"
+  - QYRUS_TEAM_NAME: "Ctc End To End"
+  - QYRUS_PROJECT_NAME: "mobility test"
+  - QYRUS_SUITE_NAME: "AppDebug"
+  - APP_ACTIVITY: "org.vosk.demo.VoskActivity"
+  - BUNDLE_ID: "org.vosk.demo.VoskActivity"
+  - DEVICE_POOL_NAME: "Azure_Test"
   - UPLOAD_APP: "no"
-  - DEBUG_MODE: "no"
+  - DEBUG_MODE: "yes"
 
 workflows:
   test:
@@ -62,6 +63,7 @@ workflows:
         - qyrus_project_name: $QYRUS_PROJECT_NAME
         - qyrus_suite_name: $QYRUS_SUITE_NAME
         - app_activity: $APP_ACTIVITY
+        - bundle_id: $BUNDLE_ID
         - device_pool_name: $DEVICE_POOL_NAME
         - upload_app: $UPLOAD_APP
         - enable_debug: $DEBUG_MODE
