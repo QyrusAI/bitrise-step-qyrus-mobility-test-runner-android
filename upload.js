@@ -25,7 +25,6 @@ const gatewayURLParse = new URL(gatewayUrl);
 let host_name = gatewayURLParse.hostname;
 let port = gatewayURLParse.port;
 let pathName = gatewayURLParse.pathname;
-let protocol = gatewayURLParse.protocol;
 
 // testing parameters
 if ( appPath == null || qyrus_username == null || qyrus_password == null || appPath == null || gatewayUrl == null ) {
@@ -45,6 +44,7 @@ if ( enable_debug == 'yes' ) {
     console.log('******* QYRUS Cloud - INPUT PARAMETERS *******');
     console.log('App Path :',appPath);
     console.log('Username :',qyrus_username);
+    console.log('Password :',qyrus_password);
     console.log('Team Name :',qyrus_team_name);
     console.log('Project Name :',qyrus_project_name);
     console.log('Suite Name :',qyrus_suite_name);

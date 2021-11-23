@@ -7,23 +7,9 @@ app:
   - A_SECRET_PARAM: $A_SECRET_PARAM
   # If you want to share this step into a StepLib
   - BITRISE_STEP_ID: qyrus-mobility-test-runner-android
-  - BITRISE_STEP_VERSION: "0.0.1"
+  - BITRISE_STEP_VERSION: "0.0.2"
   - BITRISE_STEP_GIT_CLONE_URL: https://github.com/qyrusai/qyrus-mobility-test-runner-android.git
   - MY_STEPLIB_REPO_FORK_GIT_URL: https://github.com/QyrusAI/bitrise-steplib.git
-
-  # To test add values below
-  - GATEWAY_URL: "https://stg-gateway.quinnox.info:8243/cli-adapter-mobility/v1/v1"
-  - UPLOAD_PATH: "app-debug.apk"
-  - QYRUS_USERNAME: "projectd@yopmail.com"
-  - QYRUS_PASSWORD: "UGFzc3dvcmRAMTIzCg=="
-  - QYRUS_TEAM_NAME: "Ctc End To End"
-  - QYRUS_PROJECT_NAME: "mobility test"
-  - QYRUS_SUITE_NAME: "AppDebug"
-  - APP_ACTIVITY: "org.vosk.demo.VoskActivity"
-  - BUNDLE_ID: "org.vosk.demo.VoskActivity"
-  - DEVICE_POOL_NAME: "Azure_Test"
-  - UPLOAD_APP: "no"
-  - DEBUG_MODE: "yes"
 
 workflows:
   test:

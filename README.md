@@ -23,6 +23,7 @@ Initialize inputs variables from the bitrise form.
 **Note:** 
 * Its necessary to specify bundle id if the device OS is iOS and app activity if your device OS is android.
 * If you are not uploading apk/ipa then, you have to specify the app name which you had already uploaded to Qyrus.
+* please set the $QYRUS_PASSWORD under secrets.
 
 Prints additional debug information in logs if this option is enabled
 
